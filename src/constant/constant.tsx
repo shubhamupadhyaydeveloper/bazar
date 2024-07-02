@@ -71,29 +71,33 @@ export const signUpFields = [
 export const bookData = [
   {
     id: 1,
-    title: 'the kite runner',
+    title: 'The kite runner',
     image: [
       'https://m.media-amazon.com/images/I/81IzbD2IiIL._AC_UF1000,1000_QL80_.jpg',
       'https://souq.thebookshop.ae/cdn/shop/products/9781526604736-1_800x.jpg?v=1609335482',
     ],
     price: 337,
+    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada."
   },
   {
     id: 2,
-    title: 'the subtle art of not giving a fu**',
+    title: 'The subtle art of not giving a fu**',
     image: [
       'https://m.media-amazon.com/images/I/71t4GuxLCuL._AC_UF350,350_QL50_.jpg',
       'https://m.media-amazon.com/images/I/61w9iNq8diL._AC_UF1000,1000_QL80_.jpg',
     ],
     price: 450,
+      description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada."
+    
   },
   {
     id: 3,
-    title: 'shoe dog',
+    title: 'Shoe dog',
     image: [
       "https://m.media-amazon.com/images/I/71AqHmnXppL._AC_UF1000,1000_QL80_.jpg",
       'https://m.media-amazon.com/images/I/61w9iNq8diL._AC_UF1000,1000_QL80_.jpg',
     ],
     price: 500,
+      description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada."
   },
 ];

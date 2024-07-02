@@ -8,7 +8,8 @@ type props = {
   textColor?: string;
   radius?: number;
   isGoogle?: boolean;
-  borderColor?: string
+  borderColor?: string;
+  btnWidth?: number
 };
 
 const {width, height} = Dimensions.get('window');
@@ -20,14 +21,15 @@ const SharedButton = ({
   textColor,
   radius,
   isGoogle,
-  borderColor
+  borderColor,
+  btnWidth
 }: props) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       className={`flex items-center justify-center`}
       style={{
-        width: width * 0.9,
+        width: btnWidth ?? width * 0.9,
         height: height * 0.07,
         backgroundColor: backgroundColor ?? '#54408C',
         borderRadius : radius ?? 8,

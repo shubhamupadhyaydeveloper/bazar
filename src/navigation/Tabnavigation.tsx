@@ -50,6 +50,9 @@ const Tabnavigation = () => {
         component={Profile}
         options={{
           headerShown: false,
+          tabBarIcon : ({color,focused}) => (
+             <Icon color={color}  name='person' size={25}   />
+          )
         }}
       />
     </Tab.Navigator>
