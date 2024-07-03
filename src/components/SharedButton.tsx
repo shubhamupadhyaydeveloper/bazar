@@ -1,15 +1,16 @@
 import {View, Text, TouchableOpacity, Dimensions, Image} from 'react-native';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type props = {
-  title: string;
+  title: ReactNode;
   onpress?: () => void;
   backgroundColor?: string;
   textColor?: string;
   radius?: number;
   isGoogle?: boolean;
   borderColor?: string;
-  btnWidth?: number
+  btnWidth?: number;
+  btnHeight?: number;
 };
 
 const {width, height} = Dimensions.get('window');
@@ -22,7 +23,8 @@ const SharedButton = ({
   radius,
   isGoogle,
   borderColor,
-  btnWidth
+  btnWidth,
+  btnHeight
 }: props) => {
   return (
     <TouchableOpacity
@@ -30,7 +32,7 @@ const SharedButton = ({
       className={`flex items-center justify-center`}
       style={{
         width: btnWidth ?? width * 0.9,
-        height: height * 0.07,
+        height: btnHeight ?? height * 0.07,
         backgroundColor: backgroundColor ?? '#54408C',
         borderRadius : radius ?? 8,
         borderColor : borderColor,

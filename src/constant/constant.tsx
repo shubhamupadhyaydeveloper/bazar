@@ -77,7 +77,9 @@ export const bookData = [
       'https://souq.thebookshop.ae/cdn/shop/products/9781526604736-1_800x.jpg?v=1609335482',
     ],
     price: 337,
-    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada."
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
+    rating: 3,
   },
   {
     id: 2,
@@ -87,17 +89,47 @@ export const bookData = [
       'https://m.media-amazon.com/images/I/61w9iNq8diL._AC_UF1000,1000_QL80_.jpg',
     ],
     price: 450,
-      description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada."
-    
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
+      rating : 2
   },
   {
     id: 3,
     title: 'Shoe dog',
     image: [
-      "https://m.media-amazon.com/images/I/71AqHmnXppL._AC_UF1000,1000_QL80_.jpg",
+      'https://m.media-amazon.com/images/I/71AqHmnXppL._AC_UF1000,1000_QL80_.jpg',
       'https://m.media-amazon.com/images/I/61w9iNq8diL._AC_UF1000,1000_QL80_.jpg',
     ],
     price: 500,
-      description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada."
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
+      rating : 4
   },
 ];
+
+export const authorData = [
+    {
+      id : 1,
+      authorName : 'Mark manson',
+      profileImg : "https://markmanson.net/wp-content/uploads/2024/04/mark-manson-2024.jpg",
+      profession : "self-help author"
+    },
+    {
+      id : 2,
+      authorName : "Josh Kaufman",
+      profileImg : "https://america.cgtn.com/wp-content/uploads/2015/12/Josh-Kaufman.jpg",
+      profession : "author"
+    },
+    {
+      id : 3,
+      authorName : "James Clear",
+      profileImg : "https://i0.wp.com/blog.rescuetime.com/wp-content/uploads/2018/01/james-clear-smiling-wide-1400-1.jpg?fit=1400%2C870&ssl=1",
+      profession  : "writer"
+    },
+    {
+      id : 4,
+      authorName : "Phil Knight",
+      profileImg : 'https://cdn.britannica.com/18/250018-050-F2A4DFC5/Phil-Knight-Nike-2017.jpg',
+      profession : "former ceo of nike"
+    }
+]

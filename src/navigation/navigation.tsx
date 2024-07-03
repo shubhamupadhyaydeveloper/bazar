@@ -5,6 +5,7 @@ import Onboarding from '../components/Onboarding';
 import SignIn from '../auth/SignIn';
 import Signup from '../auth/Signup';
 import Home from '../homeScreen/Index';
+import Search from '../homeScreen/Search';
 
 const AppNavigation = () => {
   const Stack = createStackNavigator();
@@ -29,6 +30,11 @@ const AppNavigation = () => {
         <Stack.Screen 
           name='index'
           component={Home}
+          options={({headerShown : false})}
+        />
+        <Stack.Screen 
+          name='search'
+          component={Search}
           options={({headerShown : false})}
         />
       </Stack.Navigator>

@@ -1,5 +1,4 @@
 package com.app;
-
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import android.app.Application;
 import com.facebook.react.PackageList;
@@ -18,7 +17,7 @@ class MainApplication : Application(), ReactApplication {
       object : DefaultReactNativeHost(this) {
         override fun getPackages(): List<ReactPackage> =
             PackageList(this).packages // Removed manual addition here
-
+           
         override fun getJSMainModuleName(): String = "index"
 
         override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG

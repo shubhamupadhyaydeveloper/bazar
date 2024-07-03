@@ -20,7 +20,7 @@ type store = {
 const useStore = create<store>()(set => ({
   cart: [],
   addToCart: value =>
-    set(state => ({cart: [...state.cart, {...value, quantity: 1}]})),
+    set(state => ({cart: [...state.cart, value]})),
   removeToCart: id =>
     set(state => ({cart: state.cart.filter(item => item.id !== id)})),
   increaseCount: id =>
@@ -41,3 +41,5 @@ const useStore = create<store>()(set => ({
       ),
     })),
 }));
+
+export default useStore
