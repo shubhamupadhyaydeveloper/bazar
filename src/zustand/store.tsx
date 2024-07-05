@@ -16,11 +16,21 @@ type store = {
   increaseCount: (id: number) => void;
   decreaseCount: (id: number) => void;
 };
-
 const useStore = create<store>()(set => ({
   cart: [],
   addToCart: value =>
-    set(state => ({cart: [...state.cart, value]})),
+    set(state => {
+      const itemExists = state.cart.find(item => item.id === value.id);
+      return {
+        cart: itemExists
+          ? state.cart.map(item =>
+              item.id === value.id
+                ? {...item, quantity: item.quantity + value.quantity}
+                : item,
+            )
+          : [...state.cart, value],
+      };
+    }),
   removeToCart: id =>
     set(state => ({cart: state.cart.filter(item => item.id !== id)})),
   increaseCount: id =>
@@ -35,7 +45,7 @@ const useStore = create<store>()(set => ({
         item.id === id
           ? {
               ...item,
-              quantity: item.quantity > 0 ? item.quantity + 1 : item.quantity,
+              quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity,
             }
           : item,
       ),

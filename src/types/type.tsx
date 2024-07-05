@@ -10,3 +10,13 @@ export const signUpSchema = z.object({
      email : z.string().email().min(1),
      password : z.string().min(6)
 })
+
+export type dataType = {
+     image: string[];
+     title: string;
+     description: string;
+     price: number;
+     id: number;
+     rating: number
+   }
+   

@@ -126,7 +126,7 @@ const Onboarding = () => {
           />
         </View>
       </View>
-      <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
+      <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
     </View>
   );
 };

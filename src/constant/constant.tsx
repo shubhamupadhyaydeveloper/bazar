@@ -68,7 +68,17 @@ export const signUpFields = [
   },
 ];
 
-export const bookData = [
+type dataType = {
+  image: string[];
+  title: string;
+  description: string;
+  price: number;
+  id: number;
+  rating: number
+}
+
+
+export const bookData:dataType[] = [
   {
     id: 1,
     title: 'The kite runner',
@@ -105,6 +115,17 @@ export const bookData = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
       rating : 4
   },
+  {
+    id : 4,
+    title : "Atomic habbits",
+    image : [
+      "https://images-cdn.ubuy.co.in/657123a74949522764448542-atomic-habits-an-easy-proven-way-to.jpg",
+      "https://gyaanstore.com/cdn/shop/products/81DCnP7ntKL.jpg?v=1701690380&width=1445"
+    ],
+    price : 499,
+    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada",
+    rating : 5
+  }
 ];
 
 export const authorData = [

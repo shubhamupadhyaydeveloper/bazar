@@ -14,6 +14,10 @@ import {bookData} from '../constant/constant';
 import Modal from 'react-native-modal';
 import SharedButton from '../components/SharedButton';
 import {Rating} from 'react-native-ratings';
+import Snackbar from 'react-native-snackbar';
+import useStore from '../zustand/store';
+import { useNavigation } from '@react-navigation/native';
+import { dataType } from '../types/type';
 
 const {width, height} = Dimensions.get('window');
 
@@ -26,8 +30,22 @@ const DetailPage = ({
   SetVisible: React.Dispatch<React.SetStateAction<boolean>>;
   id: number;
 }) => {
-  const data = bookData.find(item => item.id === id);
+  const data:dataType | undefined = bookData.find(item => item.id === id);
   const [count, SetCount] = useState(1);
+  const {addToCart} = useStore()
+  const navigation = useNavigation()
+
+  const handleAddToCart = () => {
+     if(data) {
+       addToCart({...data, quantity : count})
+       Snackbar.show({
+        text: 'Item Added To cart!',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#000',
+        textColor: '#fff', 
+        })
+     }
+  }
 
   return (
     <Modal
@@ -38,6 +56,7 @@ const DetailPage = ({
       onBackButtonPress={() => SetVisible(false)}
       useNativeDriver={true}>
       <View className="bg-white rounded-t-xl h-[80vh] px-3 w-full absolute bottom-0 right-0 left-0">
+        <StatusBar backgroundColor={"#fff"} barStyle={'dark-content'}/>
         <ScrollView>
           <View className="flex flex-row items-center justify-center mt-1">
             <View className="w-[35px] h-[4px] bg-gray-400 rounded-md sticky top-0"></View>
@@ -118,6 +137,7 @@ const DetailPage = ({
                 backgroundColor="#54408C"
                 textColor="#ffffff"
                 radius={50}
+                onpress={handleAddToCart}
               />
               <SharedButton
                 title="View cart"
@@ -125,6 +145,7 @@ const DetailPage = ({
                 backgroundColor="#FAF9FD"
                 textColor="#54408C"
                 radius={50}
+                onpress={() => (navigation as any).navigate("Cart")}
               />
             </View>
           </View>
