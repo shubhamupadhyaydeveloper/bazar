@@ -1,11 +1,42 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { Children } from 'react'
+import RBSheet from 'react-native-raw-bottom-sheet';
+import SharedButton from './SharedButton';
 
-const SharedBottomSheet = () => {
+type Props = {
+  refRBSheet : React.MutableRefObject<any | undefined>
+  children : React.ReactNode
+}
+
+const SharedBottomSheet = ({refRBSheet,children}:Props) => {
   return (
-    <View>
-      <Text className='text-black'>SharedBottomSheet</Text>
-    </View>
+    <RBSheet
+     closeOnPressBack={true}
+     draggable={true}
+      ref={refRBSheet}
+      height={150}
+      useNativeDriver={false}
+      customStyles={{
+        draggableIcon: {
+          backgroundColor: '#ccc',
+        },
+
+        container : {
+          borderTopLeftRadius : 12,
+          borderTopRightRadius : 12
+        }
+      
+      }}
+      customModalProps={{
+        animationType: 'slide',
+       
+      }}
+      customAvoidingViewProps={{
+        enabled: false,
+      }}
+    >
+     {children}
+    </RBSheet>
   )
 }
 

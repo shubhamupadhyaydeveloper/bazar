@@ -15,6 +15,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import SharedButton from '../components/SharedButton';
 import Snackbar from 'react-native-snackbar';
+import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
@@ -29,6 +30,8 @@ type dataType = {
 
 const Cart = () => {
   const {cart, removeToCart, increaseCount, decreaseCount} = useStore();
+  const navigation = useNavigation();
+
   const renderItem = (item: ListRenderItemInfo<dataType>) => (
     <View
       className="flex flex-row bg-[#f7f8f8] p-2 rounded-lg "
@@ -91,12 +94,13 @@ const Cart = () => {
               borderColor="#ccc"
               radius={50}
               onpress={() => {
-                removeToCart(item.item.id)
+                removeToCart(item.item.id);
                 Snackbar.show({
                   text: 'Item deleted To cart!',
-                  duration: Snackbar.LENGTH_SHORT,
+                  duration: 1300,
                   backgroundColor: '#000',
                   textColor: '#fff',
+                  marginBottom : 53,
                 });
               }}
             />
@@ -105,9 +109,13 @@ const Cart = () => {
       </View>
     </View>
   );
+  const subtotal = cart.reduce(
+    (acc, value) => acc + value.price * value.quantity,
+    0,
+  );
   return (
     <SafeAreaView className="bg-white h-full">
-      <Text className="text-black font-[OpenSans-Bold] text-center text-[17px] mt-2">
+      <Text className="text-black font-[OpenSans-Bold] mb-3 text-center text-[17px] mt-2">
         My Cart
       </Text>
       {cart.length === 0 ? (
@@ -121,11 +129,25 @@ const Cart = () => {
           </Text>
         </View>
       ) : (
-        <View className="mt-5">
-          <View className="flex justify-center items-center">
-            <FlatList data={cart} renderItem={item => renderItem(item)} ItemSeparatorComponent={() => <View style={{height : 12}} />} />
+        <>
+          <FlatList
+            data={cart}
+            contentContainerStyle={{alignItems : "center"}}
+            renderItem={item => renderItem(item)}
+            ItemSeparatorComponent={() => <View style={{height: 12}} />}
+          />
+          <View className="px-5 flex flex-row justify-between items-center mb-2">
+            <Text className="text-black font-[OpenSans-Bold]">Subtotal</Text>
+            <Text className="text-black">₹{subtotal}</Text>
           </View>
-        </View>
+          <View className="items-center mb-1">
+            <SharedButton
+              title="Proceed"
+              textColor="#fff"
+              onpress={() => (navigation as any).navigate('order')}
+            />
+          </View>
+        </>
       )}
     </SafeAreaView>
   );

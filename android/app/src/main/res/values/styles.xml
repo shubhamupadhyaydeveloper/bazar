@@ -8,6 +8,9 @@
         <item name="android:statusBarColor">@color/status_bar_color</item>
          <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+          <item name="android:colorPrimary">@color/primary_dark</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorAccent">@color/primary_dark</item>
     </style>
 
     <!-- Splash screen theme -->
@@ -17,5 +20,6 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/status_bar_color</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

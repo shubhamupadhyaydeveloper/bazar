@@ -18,6 +18,10 @@ import { signUpSchema } from '../types/type';
 import SharedInput from '../components/SharedInput';
 import SharedButton from '../components/SharedButton';
 import { useNavigation } from '@react-navigation/native';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { FIREBASE_AUTH } from '../lib/firebase';
+import Snackbar from 'react-native-snackbar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {height} = Dimensions.get("window")
 
@@ -29,12 +33,32 @@ const Signup = () => {
     reset,
   } = useForm({ resolver: zodResolver(signUpSchema) });
   const navigation = useNavigation();
+  const auth = FIREBASE_AUTH
 
-  const handleOnSubmit = (data: FieldValues) => {
+  const handleOnSubmit = async ({email,password}: FieldValues) => {
     try {
-      // Handle form submission
+      const result = await createUserWithEmailAndPassword(auth,email,password)
+      if(result.user) {
+        (navigation as any).navigate('inside');
+        Snackbar.show({
+          text: 'User found successful',
+          fontFamily :  "OpenSans-Bold",
+          duration: Snackbar.LENGTH_SHORT,
+          backgroundColor: '#059212',
+          textColor: '#fff', 
+          marginBottom : 50
+          })
+          await AsyncStorage.setItem("userDetail", result?.user.email as string)
+      }
     } catch (error) {
-      // Handle error
+      Snackbar.show({
+        text: "User already exist",
+        fontFamily :  "OpenSans-Bold",
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#C80036',
+        textColor: '#fff', 
+        marginBottom : 50
+        })
     } finally {
       reset();
     }
@@ -89,6 +113,7 @@ const Signup = () => {
                 radius={50}
                 textColor="#fff"
                 onpress={handleSubmit(handleOnSubmit)}
+                isSubmittig={isSubmitting}
               />
               <View className="flex flex-row gap-1 items-center justify-center mt-3">
                 <Text className="text-[#A6A6A6]">Have an account?</Text>

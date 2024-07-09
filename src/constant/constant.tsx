@@ -74,7 +74,8 @@ type dataType = {
   description: string;
   price: number;
   id: number;
-  rating: number
+  rating: number;
+  category? : string
 }
 
 
@@ -90,6 +91,7 @@ export const bookData:dataType[] = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
     rating: 3,
+    category : "Novel"
   },
   {
     id: 2,
@@ -101,7 +103,8 @@ export const bookData:dataType[] = [
     price: 450,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
-      rating : 2
+      rating : 2,
+      category : "Self help"
   },
   {
     id: 3,
@@ -113,7 +116,8 @@ export const bookData:dataType[] = [
     price: 500,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
-      rating : 4
+      rating : 4,
+      category : "Auto biography"
   },
   {
     id : 4,
@@ -124,7 +128,32 @@ export const bookData:dataType[] = [
     ],
     price : 499,
     description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada",
-    rating : 5
+    rating : 5,
+    category : "Self help"
+  },
+  {
+    id : 5,
+    title : "The trials of apollo",
+    image : [
+      "https://m.media-amazon.com/images/I/91jtddezwOL._AC_UF1000,1000_QL80_.jpg",
+      "https://m.media-amazon.com/images/I/81gAAwslLlL._AC_UF1000,1000_QL80_.jpg"
+    ],
+    price : 1162,
+    description : "hello this is description",
+    rating : 4,
+    category : "Novel"
+  },
+  {
+    id : 6,
+    title : 'The ultimate sales machine',
+    image : [
+      "https://m.media-amazon.com/images/I/71ySYJNhz3L._AC_UF1000,1000_QL80_.jpg",
+      "https://m.media-amazon.com/images/I/91dxLzocEHL._AC_UF1000,1000_QL80_.jpg"
+    ],
+    price : 393,
+    description : "This revised edition expands on these proven concepts, with checklists to get faster ROIs, Core Story Frameworks to get your company to number one in your marketplace, and a bonus, never-before-revealed chapter from Chet, “How to Live a Rich and Full Life,” that will put you in the best possible mindset to own your career.",
+    rating : 4,
+    category : "Finance"
   }
 ];
 
@@ -153,4 +182,20 @@ export const authorData = [
       profileImg : 'https://cdn.britannica.com/18/250018-050-F2A4DFC5/Phil-Knight-Nike-2017.jpg',
       profession : "former ceo of nike"
     }
+]
+
+export const homeCarouselData:string[] =[
+   "https://m.media-amazon.com/images/I/91jtddezwOL._AC_UF1000,1000_QL80_.jpg",
+   "https://m.media-amazon.com/images/I/81hMWhbHKAL._AC_UF1000,1000_QL80_.jpg",
+   "https://m.media-amazon.com/images/I/616BYPbOCyL._AC_UF1000,1000_QL80_.jpg"
+]
+
+export const categoryData:string[] = [
+   "All",
+   "Finance",
+   "Novel",
+   "Self help",
+   "Auto biography",
+   "Science",
+   "Space"
 ]

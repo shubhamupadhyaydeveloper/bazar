@@ -16,6 +16,7 @@ import {bookData} from '../constant/constant';
 import Authors from '../components/Authors';
 import DetailPage from '../components/DetailPage';
 import { useNavigation } from '@react-navigation/native';
+import Carousel from './Carousel';
 
 const {width, height} = Dimensions.get('window');
 
@@ -58,16 +59,19 @@ const HomePage = () => {
 
   return (
     <SafeAreaView className="bg-white h-full pt-2">
-      <View className="flex flex-row justify-between items-center px-4">
+      <StatusBar barStyle={"dark-content"}/>
+      <ScrollView>
+      <View className="flex flex-row justify-between items-center px-4 mb-1">
         <TouchableOpacity onPress={() => (navigation as any).navigate("search")}>
         <FeatherIcon name="search" size={25} color={'#000'}/>
         </TouchableOpacity>
-        <Text className="font-bold text-black text-lg">Home</Text>
+        <Text className="font-[OpenSans-Bold] text-black text-[16px]">Home</Text>
         <Ionicons name="notifications-outline" size={25} color={'#000'} />
       </View>
+      <Carousel />
       <View className="flex flex-row justify-between px-4 mb-2 mt-3">
         <Text className="font-[OpenSans-Bold] text-black">Top of Week</Text>
-        <TouchableOpacity activeOpacity={0.7}>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => (navigation as any).navigate("Category")}>
           <Text className="text-[#54408C] font-[OpenSans-Bold]">See all</Text>
         </TouchableOpacity>
       </View>
@@ -82,6 +86,7 @@ const HomePage = () => {
       </View>
       <DetailPage visible={visible} SetVisible={SetVisible} id={currentId} />
       <Authors />
+      </ScrollView>
     </SafeAreaView>
   );
 };

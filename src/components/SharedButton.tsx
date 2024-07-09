@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Dimensions, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Dimensions, Image,ActivityIndicator} from 'react-native';
 import React, { ReactNode } from 'react';
 
 type props = {
@@ -11,6 +11,7 @@ type props = {
   borderColor?: string;
   btnWidth?: number;
   btnHeight?: number;
+  isSubmittig?: boolean
 };
 
 const {width, height} = Dimensions.get('window');
@@ -24,7 +25,8 @@ const SharedButton = ({
   isGoogle,
   borderColor,
   btnWidth,
-  btnHeight
+  btnHeight,
+  isSubmittig 
 }: props) => {
   return (
     <TouchableOpacity
@@ -38,6 +40,7 @@ const SharedButton = ({
         borderColor : borderColor,
         borderWidth : borderColor ? 1 : 0
       }}
+      disabled={isSubmittig}
       onPress={onpress}>
       <View className='flex flex-row items-center gap-2'>
         {isGoogle && (
@@ -45,7 +48,7 @@ const SharedButton = ({
         )}
         <Text
           style={{color: textColor ?? 'black', fontFamily: 'OpenSans-Bold'}}>
-          {title}
+          {isSubmittig ? <ActivityIndicator size="large" color="#fff" /> :  title}
         </Text>
       </View>
     </TouchableOpacity>

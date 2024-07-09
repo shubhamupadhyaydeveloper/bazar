@@ -40,9 +40,9 @@ const DetailPage = ({
        addToCart({...data, quantity : count})
        Snackbar.show({
         text: 'Item Added To cart!',
-        duration: Snackbar.LENGTH_SHORT,
+        duration: 1000,
         backgroundColor: '#000',
-        textColor: '#fff', 
+        textColor: '#fff',
         })
      }
   }

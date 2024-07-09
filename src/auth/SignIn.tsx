@@ -17,6 +17,10 @@ import {signInSchema} from '../types/type';
 import SharedInput from '../components/SharedInput';
 import SharedButton from '../components/SharedButton';
 import {useNavigation} from '@react-navigation/native';
+import { FIREBASE_AUTH } from '../lib/firebase';
+import { signInWithEmailAndPassword, User } from 'firebase/auth';
+import Snackbar from 'react-native-snackbar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignIn = () => {
   const {
@@ -26,10 +30,34 @@ const SignIn = () => {
     reset,
   } = useForm({resolver: zodResolver(signInSchema)});
   const navigation = useNavigation();
+  const auth = FIREBASE_AUTH
 
-  const handleOnSubmit = (data: FieldValues) => {
+  const handleOnSubmit = async ({email , password}: FieldValues) => {
     try {
-      (navigation as any).navigate('index');
+      const result = await signInWithEmailAndPassword(auth,email,password)
+      if(result.user) {
+        (navigation as any).navigate('inside');
+        Snackbar.show({
+          text: 'User found Successful',
+          duration: Snackbar.LENGTH_SHORT,
+          fontFamily :  "OpenSans-Bold",
+          backgroundColor: '#059212',
+          textColor: '#fff', 
+          marginBottom : 50
+          })
+        await AsyncStorage.setItem("userDetail", result?.user.email as string)
+      }
+      if(!result.user) {
+        Snackbar.show({
+          text: 'User not found',
+          duration: Snackbar.LENGTH_SHORT,
+          backgroundColor: '#C80036',
+          fontFamily :  "OpenSans-Bold",
+          textColor: '#fff', 
+          marginBottom : 50
+          })
+      }
+      // console.log(email,password)
     } catch (error) {
     } finally {
       reset();
@@ -84,6 +112,7 @@ const SignIn = () => {
               radius={50}
               textColor="#fff"
               onpress={handleSubmit(handleOnSubmit)}
+              isSubmittig={isSubmitting}
             />
             <View className="flex flex-row gap-1 items-center justify-center mt-5">
               <Text className="text-[#A6A6A6] ">Don't have an account?</Text>
