@@ -48,6 +48,47 @@ const ConfirmOrder = () => {
             />
           </View>
         </View>
+        <View className="border border-[#ccc] min-h-[15vh] rounded-lg px-2 flex mt-3">
+          <Text className="text-black font-[OpenSans-Bold] mt-2 mb-2">
+            Date and Time
+          </Text>
+          <View className="flex flex-row items-center" style={{gap: 15}}>
+            <View className="bg-[#f5f4f7] w-[50px] h-[50px] rounded-full items-center justify-center">
+              <Ionicons name="calendar" size={25} color={'#54408C'} />
+            </View>
+            <View style={{width: width * 0.55}}>
+              <Text className="text-black font-[OpenSans-Bold]">
+                Date & Time
+              </Text>
+              <Text className="text-[#ccc]">
+                Choose data and Time
+              </Text>
+            </View>
+            <MaterialIcons name="arrow-forward-ios" color={'#000'} size={25} />
+          </View>
+        </View>
+        <View className="border border-[#ccc] min-h-[15vh] rounded-lg px-2 flex mt-3">
+          <Text className="text-black font-[OpenSans-Bold] mt-2 mb-2">
+            Payment
+          </Text>
+          <View className="flex flex-row items-center" style={{gap: 15}}>
+            <View className="bg-[#f5f4f7] w-[50px] h-[50px] rounded-full items-center justify-center">
+              <MaterialIcons name="payments" size={25} color={'#54408C'} />
+            </View>
+            <View style={{width: width * 0.55}}>
+              <Text className="text-black font-[OpenSans-Bold]">
+                Payment
+              </Text>
+              <Text className="text-[#ccc]">
+                Choose your payment
+              </Text>
+            </View>
+            <MaterialIcons name="arrow-forward-ios" color={'#000'} size={25} />
+          </View>
+        </View> 
+        <View className='flex items-center absolute bottom-[2vh] right-0 left-0'>
+           <SharedButton title="Order" textColor='#fff'/>
+        </View>
         <SharedBottomSheet refRBSheet={refRBSheet}>
           <View className="flex items-center justify-center " style={{gap: 10}}>
             <View>

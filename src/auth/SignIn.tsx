@@ -38,7 +38,7 @@ const SignIn = () => {
       if(result.user) {
         (navigation as any).navigate('inside');
         Snackbar.show({
-          text: 'User found Successful',
+          text: 'user found successful',
           duration: Snackbar.LENGTH_SHORT,
           fontFamily :  "OpenSans-Bold",
           backgroundColor: '#059212',

@@ -8,7 +8,7 @@ import {
   StatusBar,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,6 +17,7 @@ import Authors from '../components/Authors';
 import DetailPage from '../components/DetailPage';
 import { useNavigation } from '@react-navigation/native';
 import Carousel from './Carousel';
+import messaging from '@react-native-firebase/messaging';
 
 const {width, height} = Dimensions.get('window');
 
@@ -54,6 +55,15 @@ const HomePage = () => {
       </View>
     </TouchableOpacity>
   );
+
+  useEffect(() => {
+     (
+       async () => {
+         let token = await messaging().getToken()
+         console.log("This is token",token)
+       }
+     )()
+  },[])
 
   const ItemSeparator = () => <View style={{width: width * 0.025}} />;
 

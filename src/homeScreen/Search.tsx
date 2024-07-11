@@ -30,8 +30,7 @@ const CustomHeader = () => {
   const [input, setInput] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [matchQuery, setMatchQuery] = useState<dataType[]>([]);
-  const {addToCart} = useStore()
-  
+  const {addToCart} = useStore();
 
   const filterData = useCallback(() => {
     if (input.length > 0) {
@@ -47,15 +46,15 @@ const CustomHeader = () => {
     filterData();
   }, [input]);
 
-  const handleAddToCart = useCallback((item:dataType) => {
-    addToCart({ ...item, quantity: 1 });
+  const handleAddToCart = useCallback((item: dataType) => {
+    addToCart({...item, quantity: 1});
     Snackbar.show({
       text: 'Item added to cart',
       duration: Snackbar.LENGTH_SHORT,
       backgroundColor: '#000',
       fontFamily: 'OpenSans-Bold',
       textColor: '#fff',
-      marginBottom : 50
+      marginBottom: 50,
     });
   }, []);
 
@@ -212,17 +211,17 @@ const CustomHeader = () => {
                       </Text>
                       <Text className="text-black">₹{item.price}</Text>
                     </View>
-                    <View className='mt-4'>
-                    <SharedButton
-                      title="add to cart"
-                      btnWidth={100}
-                      btnHeight={40}
-                      textColor="#000"
-                      backgroundColor="#ccc"
-                      borderColor="#000"
-                      radius={50}
-                      onpress={() => handleAddToCart(item)}
-                    />
+                    <View className="mt-4">
+                      <SharedButton
+                        title="add to cart"
+                        btnWidth={100}
+                        btnHeight={40}
+                        textColor="#000"
+                        backgroundColor="#ccc"
+                        borderColor="#000"
+                        radius={50}
+                        onpress={() => handleAddToCart(item)}
+                      />
                     </View>
                   </View>
                 </View>
